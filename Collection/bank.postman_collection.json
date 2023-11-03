@@ -1,19 +1,34 @@
 {
 	"info": {
-		"_postman_id": "5f8f54dc-93ca-4201-bd07-10ff9ab5fd64",
-		"name": "tenpo",
+		"_postman_id": "cc6850d3-bdec-4f86-bccc-a0cecc8d28a4",
+		"name": "bank",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "69567"
 	},
 	"item": [
 		{
-			"name": "createUser",
+			"name": "createAccount",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\":\"123\",\r\n    \"password\":\"123\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Juan Pablo Fernandez\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,53 +36,73 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/createUser",
+					"raw": "localhost:8080/api/accounts",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
-						"createUser"
+						"accounts"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "login",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "getAccount",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user\":\"123\",\r\n    \"password\":\"1\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "localhost:8080/api/login",
+					"raw": "localhost:8080/api/accounts/1/balance",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
-						"login"
+						"accounts",
+						"1",
+						"balance"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "calculateTax",
+			"name": "createTransaction(deposit)",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -78,7 +113,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"first\": \"3\",\r\n    \"second\": \"1\"\r\n}",
+					"raw": "{\r\n    \"accountNumber\": 3,\r\n    \"transactionType\": \"deposit\",\r\n    \"amount\": 10000\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,30 +121,48 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/calculateTax",
+					"raw": "localhost:8080/api/transactions",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
-						"calculateTax"
+						"transactions"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "callHistory",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "createTransaction(retire)",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "userId",
+						"value": "0",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"accountNumber\": 1,\r\n    \"transactionType\": \"retire\",\r\n    \"amount\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -117,24 +170,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/history?page=0&size=10",
+					"raw": "localhost:8080/api/transactions",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
-						"history"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "0"
-						},
-						{
-							"key": "size",
-							"value": "10"
-						}
+						"transactions"
 					]
 				}
 			},
