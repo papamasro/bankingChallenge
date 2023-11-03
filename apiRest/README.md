@@ -85,7 +85,7 @@ Ejecutar JAVA localmente:
 
 Primero, asegúrate de tener instalado Java 17, IntelliJ y Git.
 Clona el repositorio https://github.com/papamasro/.
-repositorio con postman para pruebas https://github.com/papamasro/
+repositorio con postman para pruebas https://github.com/papamasro/bankingChallenge/tree/main/Collection
 .
 
 Abre el proyecto y configura las variables de entorno:
