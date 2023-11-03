@@ -110,6 +110,13 @@ Para correr el servicio mediante docker-compose, desde la carpeta raíz del proy
 docker-compose up --build
 ~~~
 
+La api corre con una basic authentication (no recomendada, pero implementada por falta de tiempo)
+
+~~~
+Username:admin
+Password:admin
+~~~
+
 
 
 Mejoras Obligatorias
