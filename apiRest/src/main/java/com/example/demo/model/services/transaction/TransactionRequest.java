@@ -1,14 +1,23 @@
 package com.example.demo.model.services.transaction;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 
 
 public class TransactionRequest {
-
+    @Valid
+    @NotNull(message = "Account Number must not be null")
+    @DecimalMin("0.0")
     private Long accountNumber;
-
+    @Valid
+    @NotNull(message = "Transaction Type must not be null")
     private String transactionType;
-
+    @Valid
+    @NotNull(message = "Amount must not be null")
+    @DecimalMin("0.0")
     private BigDecimal amount;
 
     public TransactionRequest(Long accountNumber, String transactionType, BigDecimal amount) {
